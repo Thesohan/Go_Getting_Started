@@ -30,8 +30,19 @@ func main() {
    e1:=Employee{"john","Ponting"}
    e1.fullname()
    closure()
+   array()
+   interfaces()
 }
 
+func interfaces(){
+	c1 := car{"suzuki","blue"}  
+	t1:= toyota{"Toyota","Red", 100}  
+	c1.accelerate()  
+	t1.accelerate()  
+	foo(c1)  
+	foo(t1)  
+ 
+}
 func closure(){
 	number:=10
 	squareNumber :=func()(int){
@@ -41,4 +52,40 @@ func closure(){
 	fmt.Println(squareNumber())
 
 	fmt.Println(squareNumber())
+}
+
+func array(){
+	var x [5]int
+	var i,j int
+
+	for i=0;i<5;i++{
+		x[i]=i+10
+	}
+	for j=0;j<5;j++{
+		fmt.Printf("Element[%d]=%d\n",j,x[j])
+	}
+}
+
+type vehicle interface {  
+   accelerate()  
+}  
+func foo(v vehicle)  {  
+   fmt.Println(v)  
+     
+}  
+type car struct {  
+   model string  
+   color string  
+}  
+func (c car) accelerate()  {  
+   fmt.Println("Accelrating?")  
+     
+}  
+type toyota struct {  
+  model string  
+   color string  
+   speed int  
+}  
+func (t toyota) accelerate(){  
+   fmt.Println("I am toyota, I accelerate fast?")  
 }
